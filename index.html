@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0%;
+      padding: 0px;
+      box-sizing: border-box;
+      font-size: 30px;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    main{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position:relative;
+    }
+    button{
+      padding: 15px 25px;
+      font-size: 25px;
+      outline: none;
+      border-radius: 10px;
+      transition: all .3s;
+
+    }
+    button:active{
+      padding:10px 20px;
+      font-size: 20px;
+    }
+    header{
+      z-index: 1;
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      padding: 20px;
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgb(255, 255, 255);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h2>Color Flipper</h2>
+    <p id="hexvalue">#FFFFF</p>
+  </header>
+  <main id="changebg">
+    <button>Click Me</button>
+  </main>
+  <script>
+    const value = document.getElementById('hexvalue');
+    const btn = document.querySelector('button');
+    const bgcolor = document.getElementById('changebg');
+    const colors = [0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F']
+    btn.addEventListener('click',colorhex)
+    
+    function colorhex(){
+      let background = '#';
+      for(let i = 1;i<=6;i++){
+        background+=randomhex();
+        
+      }
+      bgcolor.style.backgroundColor=background;
+      value.innerHTML=background;
+      value.style.color=background;
+      btn.style.color=background;
+
+    }
+   
+    function randomhex(){
+      let value =Math.floor(Math.random()*16)
+      return (colors[value])
+    }
+    randomhex()
+  </script>
+</body>
+
+</html>
